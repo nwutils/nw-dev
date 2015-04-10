@@ -1,0 +1,39 @@
+{
+  "name": "nw-dev",
+  "description": "A drop-in library for nw.js development",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/1j01/nw-dev.git"
+  },
+  "bugs": {
+    "url": "http://github.com/1j01/nw-dev/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "live-reload",
+    "dev-reload",
+    "auto-reload",
+    "reload",
+    "webkit",
+    "node-webkit",
+    "nw.js",
+    "nwjs",
+    "nw",
+    "app",
+    "desktop",
+    "dev",
+    "developer",
+    "development"
+  ],
+  "main": "lib/dev.js",
+  "scripts": {
+    "prepublish": "coffee -o lib/ -c src/"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.9.1"
+  },
+  "dependencies": {
+    "chokidar": "^0.12.5"
+  }
+}
