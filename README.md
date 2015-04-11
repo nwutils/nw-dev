@@ -11,7 +11,7 @@ A drop-in library for [nw.js](https://github.com/nwjs/nw.js) development
 
 * Sets `window.CRASHED` upon error,
   so you can stop an animation loop for example
-  and only get one error
+  (and not flood the console with errors)
 
 * Clears require cache,
   so reloading works with modules
@@ -20,7 +20,7 @@ A drop-in library for [nw.js](https://github.com/nwjs/nw.js) development
   it only tries to do error handling
 
 
-## install nw-dev
+## install
 
 `npm i nw-dev --save-dev`
 
@@ -31,12 +31,6 @@ Put this script before any other scripts
 <script src="node_modules/nw-dev/lib/dev.js"></script>
 ```
 
-Or just download `lib/dev.js` and include it:
-
-```html
-<script src="lib/dev.js"></script>
-```
-
 
 ## my window annoyingly asserts focus when reloading
 
@@ -44,16 +38,17 @@ Or just download `lib/dev.js` and include it:
 
 You probably have your app set up to show itself once it finishes loading.
 
-That's good, but you're calling `win.show()` which focuses the window.
+That's a good thing, but you're calling `win.show()`,
+inadvertently focusing the window.
 
-Do this (CoffeeScript):
+Do this (with CoffeeScript):
 
 ```coffee
 win.show() unless win.shown
 win.shown = yes
 ```
 
-Or this (JavaScript):
+Or this (with JavaScript):
 
 ```js
 if(!win.shown){

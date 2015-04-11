@@ -17,7 +17,7 @@ if process?
 	
 	# Live reload
 	try
-		chokidar = require "chokidar"
+		chokidar = window.require "./node_modules/nw-dev/node_modules/chokidar/"
 		watcher = chokidar.watch ".", ignored: /node_modules|\.git/
 		watcher.on "change", (path)->
 			watcher.close()
