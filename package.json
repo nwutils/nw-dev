@@ -1,7 +1,7 @@
 {
   "name": "nw-dev",
   "description": "A drop-in library for nw.js development",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "repository": {
     "type": "git",
     "url": "http://github.com/1j01/nw-dev.git"

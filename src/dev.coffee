@@ -16,10 +16,23 @@ if process?
 		nwwin.showDevTools() unless nwwin.isDevToolsOpen()
 		nwwin.show() if nwgui.App.manifest.window?.show is false
 	
+	# Show developer tools with F12
+	window.addEventListener "keydown", (e)->
+		if e.keyCode is 123 # F12
+			if nwwin.isDevToolsOpen()
+				nwwin.closeDevTools()
+			else
+				nwwin.showDevTools()
+	
 	# Live reload
 	try
-		chokidar = window.require "./node_modules/nw-dev/node_modules/chokidar/"
+		chokidar = window.require "nw-dev/node_modules/chokidar/"
+	catch e
+		console.warn "Live reload disabled:", e.stack
+	
+	if chokidar
 		watcher = chokidar.watch ".", ignored: /node_modules|\.git/
+		# @TODO: watch linked dependencies and bundled dependencies
 		watcher.on "change", (path)->
 			watcher.close()
 			
@@ -55,15 +68,6 @@ if process?
 				# actually, you should just use that library
 			else
 				location?.reload()
-	catch e
-		console.warn "Live reload disabled:", e.stack
-	
-	window.addEventListener "keydown", (e)->
-		if e.keyCode is 123 # F12
-			if nwwin.isDevToolsOpen()
-				nwwin.closeDevTools()
-			else
-				nwwin.showDevTools()
 
 window.onerror = (e)->
 	console?.warn? "CRASH" unless window.CRASHED
