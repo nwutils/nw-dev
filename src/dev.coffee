@@ -5,7 +5,7 @@ if process?
 	nwgui = window.require "nw.gui"
 	nwwin = nwgui.Window.get window
 	
-	# Get rid of the shitty broken error handler
+	# Get rid of the useless default error handler
 	process.removeAllListeners "uncaughtException"
 	# stupid clouds
 	
@@ -43,17 +43,25 @@ if process?
 			# very obscure cases
 			# overall, it's very helpful
 			
+			# this could cause issues in somewhat less obscure cases
+			# where another page/context has listeners on this window
+			nwwin.removeAllListeners()
+			# but it fixes event listeners being leaked between reloads
+			# which cause errors that wouldn't occur without reloading
+			
 			nwwin.closeDevTools()
 			
 			if path is "package.json"
+				# we want to do a full reload
+				
 				fs = require "fs"
 				pkg = JSON.parse fs.readFileSync "package.json", "utf8"
 				
-				# override the getter
+				# override the getter by redefining the property
 				Object.defineProperty nwgui.App,
 					"manifest"
 					value: pkg
-					configurable: yes # so it'll work a second time
+					configurable: yes # (so this will work a second time)
 				
 				{x, y} = nwwin
 				width = window.innerWidth
