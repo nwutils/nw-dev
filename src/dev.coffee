@@ -31,8 +31,9 @@ if process?
 		console.warn "Live reload disabled:", e.stack
 	
 	if chokidar
-		watcher = chokidar.watch ".", ignored: /node_modules|\.git/
+		watcher = chokidar.watch ".", ignored: /node_modules|npm-debug\.log|\.git|\.hg|\.svn/
 		# @TODO: watch linked dependencies and bundled dependencies
+		# and make a package called watch-package
 		watcher.on "change", (path)->
 			watcher.close()
 			
