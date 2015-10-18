@@ -23,6 +23,8 @@ if process?
 				nwwin.closeDevTools()
 			else
 				nwwin.showDevTools()
+		if e.keyIdentifier is "F5"
+			window.location.reload()
 	
 	# Live reload
 	try

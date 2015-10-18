@@ -4,7 +4,7 @@
   "version": "1.2.3",
   "repository": {
     "type": "git",
-    "url": "http://github.com/1j01/nw-dev.git"
+    "url": "git+ssh://git@github.com/1j01/nw-dev.git"
   },
   "bugs": {
     "url": "http://github.com/1j01/nw-dev/issues"
@@ -35,5 +35,13 @@
   },
   "dependencies": {
     "chokidar": "^0.12.5"
-  }
+  },
+  "gitHead": "5782f35183c593b81d1c36994983554aa058eee3",
+  "readme": "\r\n# nw-dev\r\n\r\nA drop-in library for [nw.js](https://github.com/nwjs/nw.js) development\r\n\r\n* Live-reloads upon save\r\n\r\n* Opens devtools when you press <kbd>F12</kbd>\r\n\r\n* Opens devtools upon error\r\n\r\n* Sets `window.CRASHED` upon error,\r\n  so you can stop an animation loop for example\r\n  (and not flood the console with errors)\r\n\r\n* Clears require cache,\r\n  so reloading works with modules\r\n\r\n* When you change `package.json`, it closes and reopens the window\r\n  with the new values, so you don't even have to restart\r\n  to change things like `window.frame` or `window.toolbar`\r\n\r\n* When loaded in a browser (non-nw.js),\r\n  it only tries to do error handling\r\n\r\n\r\n## install\r\n\r\n`npm i nw-dev --save-dev`\r\n\r\nPut this script before any other scripts\r\n(that you're developing, at least):\r\n\r\n```html\r\n<script src=\"node_modules/nw-dev/lib/dev.js\"></script>\r\n```\r\n\r\n\r\n## my window annoyingly asserts focus when reloading\r\n\r\n(This can be especially annoying if your editor autosaves!)\r\n\r\nYou probably have your app set up to show itself once it finishes loading.\r\n\r\nThat's a good thing, but you're calling `win.show()`,\r\ninadvertently focusing the window.\r\n\r\nDo this (with CoffeeScript):\r\n\r\n```coffee\r\nwin.show() unless win.shown\r\nwin.shown = yes\r\n```\r\n\r\nOr this (with JavaScript):\r\n\r\n```js\r\nif(!win.shown){\r\n    win.show();\r\n    win.shown = true;\r\n}\r\n```\r\n\r\n(Now your autosaving workflow is once again beneficial!)\r\n\r\n\r\n## develop nw-dev\r\n\r\n* `npm i`\r\n\r\n* `npm link`\r\n\r\n* `cd ~/some/other/project`\r\n\r\n* `npm link nw-dev`\r\n\r\n* `cd ../back/to/nw-dev`\r\n\r\n* `npm run prepublish` to recompile\r\n\r\n",
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/1j01/nw-dev#readme",
+  "_id": "nw-dev@1.2.3",
+  "_shasum": "d7834c5cce0429bcfda5b445252102d31a488083",
+  "_from": "git+https://github.com/constrom/nw-dev.git",
+  "_resolved": "git+https://github.com/constrom/nw-dev.git#5782f35183c593b81d1c36994983554aa058eee3"
 }
