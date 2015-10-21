@@ -18,11 +18,14 @@ if process?
 	
 	# Show developer tools with F12
 	window.addEventListener "keydown", (e)->
-		if e.keyCode is 123 # F12
-			if nwwin.isDevToolsOpen()
-				nwwin.closeDevTools()
-			else
-				nwwin.showDevTools()
+		switch e.keyIdentifier
+			when "F12"
+				if nwwin.isDevToolsOpen()
+					nwwin.closeDevTools()
+				else
+					nwwin.showDevTools()
+			when "F5"
+				window.location.reload()
 	
 	# Live reload
 	try

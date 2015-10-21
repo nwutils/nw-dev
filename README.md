@@ -5,6 +5,8 @@ A drop-in library for [nw.js](https://github.com/nwjs/nw.js) development
 
 * Live-reloads upon save
 
+* Reloads when you press <kbd>F5</kbd>
+
 * Opens devtools when you press <kbd>F12</kbd>
 
 * Opens devtools upon error
