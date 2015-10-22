@@ -30,8 +30,11 @@ if process?
 	# Live reload
 	try
 		chokidar = window.require "nw-dev/node_modules/chokidar/"
-	catch e
-		console.warn "Live reload disabled:", e.stack
+	catch err1
+		try
+			chokidar = window.require "chokidar"
+		catch err2
+			console.warn "Live reload disabled:", [err1.stack, err2.stack]
 	
 	if chokidar
 		watcher = chokidar.watch ".", ignored: /node_modules|npm-debug\.log|\.git|\.hg|\.svn/
