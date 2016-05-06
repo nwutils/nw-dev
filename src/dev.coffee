@@ -11,19 +11,17 @@ if process?
 	
 	# Add our own handler
 	process.on "uncaughtException", (e)->
-		console?.warn? "CRASH" unless window.CRASHED
-		window.CRASHED = true
-		nwwin.showDevTools() unless nwwin.isDevToolsOpen()
+		unless window.CRASHED
+			window.CRASHED = true
+			console?.warn? "CRASH"
+			nwwin.showDevTools()
 		nwwin.show() if nwgui.App.manifest.window?.show is false
 	
 	# Show developer tools with F12
 	window.addEventListener "keydown", (e)->
 		switch e.keyIdentifier
 			when "F12"
-				if nwwin.isDevToolsOpen()
-					nwwin.closeDevTools()
-				else
-					nwwin.showDevTools()
+				nwwin.showDevTools()
 			when "F5"
 				window.location.reload()
 	
@@ -78,13 +76,12 @@ if process?
 				newwin_options[k] = v for k, v of pkg.window
 				newwin_options[k] = v for k, v of {x, y, width, height}
 				newwin = nwgui.Window.open window.location.href, newwin_options
-				# @TODO: handle zoomLevel and other window state?
-				# like https://github.com/azu/node-webkit-winstate
-				# actually, you should just use that library
 			else
 				location?.reload()
 
 window.onerror = (e)->
-	console?.warn? "CRASH" unless window.CRASHED
-	window.CRASHED = true
-	console?.error? "Got exception:", e
+	unless window.CRASHED
+		window.CRASHED = true
+		console?.warn? "CRASH"
+		nwwin?.showDevTools()
+	return false

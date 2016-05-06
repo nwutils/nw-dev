@@ -7,20 +7,21 @@ A drop-in library for [nw.js](https://github.com/nwjs/nw.js) development
 
 * Reloads when you press <kbd>F5</kbd>
 
-* Opens devtools when you press <kbd>F12</kbd>
+* Opens the devtools when you press <kbd>F12</kbd> (`nw@>=0.13.0` does this for you)
 
-* Opens devtools upon error
+* Opens the devtools upon error
 
 * Sets `window.CRASHED` upon error,
   so you can stop an animation loop for example
   (and not flood the console with errors)
 
-* Clears require cache,
+* Clears the require cache,
   so reloading works with modules
 
 * When you change `package.json`, it closes and reopens the window
   with the new values, so you don't even have to restart
-  to change things like `window.frame` or `window.toolbar`
+  to change things like `window.frame`
+  (not working in latest nw.js)
 
 * When loaded in a browser (non-nw.js),
   it only tries to do error handling
@@ -67,6 +68,8 @@ if(!win.shown){
 
 
 ## develop nw-dev
+
+An ironically cumbersome workflow:
 
 * `npm i`
 
