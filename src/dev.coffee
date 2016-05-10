@@ -25,6 +25,10 @@ if process?
 			when "F5"
 				window.location.reload()
 	
+	ignored = [/node_modules|npm-debug\.log|\.git|\.hg|\.svn/]
+	ignore = document.currentScript.dataset.ignore
+	ignored.push ignore if ignore
+	
 	# Live reload
 	try
 		chokidar = window.require "nw-dev/node_modules/chokidar/"
@@ -35,7 +39,7 @@ if process?
 			console.warn "Live reload disabled:", [err1.stack, err2.stack]
 	
 	if chokidar
-		watcher = chokidar.watch ".", ignored: /node_modules|npm-debug\.log|\.git|\.hg|\.svn/
+		watcher = chokidar.watch ".", {ignored}
 		# @TODO: watch linked dependencies and bundled dependencies
 		# and make a package called watch-package
 		watcher.on "change", (path)->

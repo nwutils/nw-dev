@@ -1,7 +1,7 @@
 
 # nw-dev
 
-A drop-in library for [nw.js](https://github.com/nwjs/nw.js) development
+A drop-in library for [nw.js][] development
 
 * Live-reloads upon save
 
@@ -39,23 +39,29 @@ Put this script before any other scripts
 ```
 
 
-## my window annoyingly asserts focus when reloading
+## exclude some files from being watched
+
+By default `node_modules`, `npm-debug.log`, `.git`, `.hg`, and `.svn` are ignored.
+
+You can ignore additional paths by adding a `data-ignore` attribute to the script:
+
+```html
+<script src="node_modules/nw-dev/lib/dev.js" data-ignore="data.json|*.md"></script>
+```
+
+The ignore pattern will be passed to [chokidar][] and interpreted by [micromatch][].
+
+
+## don't annoyingly assert window focus when reloading
 
 (This can be especially annoying if your editor autosaves!)
 
-You probably have your app set up to show itself once it finishes loading.
+You may have your app set up to show itself once it finishes loading.
 
-That's a good thing, but you're calling `win.show()`,
-inadvertently focusing the window.
+That's a good thing, but if you're calling `win.show()`,
+it can inadvertently focus the window.
 
-Do this (with CoffeeScript):
-
-```coffee
-win.show() unless win.shown
-win.shown = yes
-```
-
-Or this (with JavaScript):
+Do this (with JavaScript):
 
 ```js
 if(!win.shown){
@@ -64,22 +70,24 @@ if(!win.shown){
 }
 ```
 
-(Now your autosaving workflow is once again beneficial!)
+Or this (with CoffeeScript):
+
+```coffee
+win.show() unless win.shown
+win.shown = yes
+```
+
+(Now autosaving can once again be beneficial!)
 
 
 ## develop nw-dev
 
-An ironically cumbersome workflow:
-
 * `npm i`
 
-* `npm link`
-
-* `cd ~/some/other/project`
-
-* `npm link nw-dev`
-
-* `cd ../back/to/nw-dev`
+* `npm link`, and `npm link nw-dev` from an nw.js project
 
 * `npm run prepublish` to recompile
 
+[nw.js]: https://github.com/nwjs/nw.js
+[chokidar]: https://github.com/paulmillr/chokidar
+[micromatch]: https://github.com/jonschlinkert/micromatch
