@@ -5,9 +5,8 @@ if process?
 	nwgui = window.require "nw.gui"
 	nwwin = nwgui.Window.get window
 	
-	# Get rid of the useless default error handler
+	# Get rid of the default error handler
 	process.removeAllListeners "uncaughtException"
-	# stupid clouds
 	
 	# Add our own handler
 	process.on "uncaughtException", (e)->
@@ -17,9 +16,9 @@ if process?
 			nwwin.showDevTools()
 		nwwin.show() if nwgui.App.manifest.window?.show is false
 	
-	# Show developer tools with F12
+	# Keyboard shortcuts
 	window.addEventListener "keydown", (e)->
-		switch e.keyIdentifier
+		switch e.key ? e.keyIdentifier
 			when "F12"
 				nwwin.showDevTools()
 			when "F5"
