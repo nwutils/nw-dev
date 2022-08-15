@@ -28,10 +28,12 @@
   ],
   "main": "lib/dev.js",
   "scripts": {
-    "prepublish": "coffee -o lib/ -c src/"
+    "prepublish": "coffee -o lib/ -c src/",
+    "demo": "nw ./demo"
   },
   "devDependencies": {
-    "coffee-script": "^1.10.0"
+    "coffee-script": "^1.10.0",
+    "nw": "^0.67.1-sdk"
   },
   "dependencies": {
     "chokidar": "^1.4.3"
