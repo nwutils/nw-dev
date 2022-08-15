@@ -29,7 +29,8 @@
   ],
   "main": "lib/dev.js",
   "scripts": {
-    "prepublish": "coffee -o lib/ -c src/"
+    "prepublish": "coffee -o lib/ -c src/",
+    "demo": "nw ./demo"
   },
   "devDependencies": {
     "coffeescript": "^2.7.0"
