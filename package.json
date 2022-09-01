@@ -4,11 +4,12 @@
   "version": "3.0.1",
   "repository": {
     "type": "git",
-    "url": "http://github.com/1j01/nw-dev.git"
+    "url": "http://github.com/nwutils/nw-dev.git"
   },
   "bugs": {
-    "url": "http://github.com/1j01/nw-dev/issues"
+    "url": "http://github.com/nwutils/nw-dev/issues"
   },
+  "author": "Isaiah Odhner",
   "license": "MIT",
   "keywords": [
     "live-reload",
@@ -31,9 +32,9 @@
     "prepublish": "coffee -o lib/ -c src/"
   },
   "devDependencies": {
-    "coffee-script": "^1.10.0"
+    "coffeescript": "^2.7.0"
   },
   "dependencies": {
-    "chokidar": "^1.4.3"
+    "chokidar": "^3.5.3"
   }
 }
