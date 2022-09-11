@@ -30,7 +30,7 @@
   "main": "lib/dev.js",
   "scripts": {
     "prepublish": "coffee -o lib/ -c src/",
-    "demo": "nw ./demo"
+    "demo": "cd ./demo && npm i && npm start"
   },
   "devDependencies": {
     "coffeescript": "^2.7.0"
