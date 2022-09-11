@@ -2,6 +2,7 @@
     "name": "nw-dev-demo",
     "version": "0.0.0",
     "main": "./index.html",
+    "nodejs": true,
     "devDependencies": {
         "nw-dev": "..",
         "nw": "^0.68.0-sdk"
