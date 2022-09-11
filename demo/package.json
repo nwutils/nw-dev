@@ -4,7 +4,7 @@
     "main": "./index.html",
     "devDependencies": {
         "nw-dev": "..",
-        "nw": "^0.67.1-sdk"
+        "nw": "^0.68.0-sdk"
     },
     "scripts": {
         "start": "nw ."
