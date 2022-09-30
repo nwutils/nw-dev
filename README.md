@@ -1,5 +1,5 @@
 
-# nw-dev
+# <img src="./nw-dev-logo.svg" height="64" valign="middle"> nw-dev
 
 A drop-in library for [nw.js][] development
 
