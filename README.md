@@ -32,7 +32,7 @@ A drop-in library for [nw.js][] development
 `npm i nw-dev --save-dev`
 
 Put this script before any other scripts
-(that you're developing, at least):
+(or at least ones you're developing):
 
 ```html
 <script src="node_modules/nw-dev/lib/dev.js"></script>
@@ -52,16 +52,14 @@ You can ignore additional paths by adding a `data-ignore` attribute to the scrip
 The ignore pattern will be passed to [chokidar][] and interpreted by [micromatch][].
 
 
-## Don't annoyingly assert window focus when reloading
+## Usage with `win.show()`
 
-(This can be especially annoying if your editor autosaves!)
+If you use `win.show()` to show your app's window only once it finishes loading,
+it may also *focus* the window, depending on the platform.
 
-You may have your app set up to show itself once it finishes loading.
+This can be annoying if you want to keep editing after saving, as it will steal focus from your code editor — especially if you use autosave.
 
-That's a good thing, but if you're calling `win.show()`,
-it can inadvertently focus the window.
-
-Do this (with JavaScript):
+To avoid this behavior, you can guard against calling `win.show()` more than once like so:
 
 ```js
 if(!win.shown){
@@ -70,15 +68,7 @@ if(!win.shown){
 }
 ```
 
-Or this (with CoffeeScript):
-
-```coffee
-win.show() unless win.shown
-win.shown = yes
-```
-
-(Now autosaving can once again be beneficial!)
-
+Note that `win.shown` is a made-up property (using Javascript's [expando](https://developer.mozilla.org/en-US/docs/Glossary/Expando) feature), but it's attached to the NW.js window object rather than using a simple global variable, in order to persist across reloads.
 
 ## Develop nw-dev
 
