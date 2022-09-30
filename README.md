@@ -27,7 +27,7 @@ A drop-in library for [nw.js][] development
   it only tries to do error handling
 
 
-## install
+## Install
 
 `npm i nw-dev --save-dev`
 
@@ -39,7 +39,7 @@ Put this script before any other scripts
 ```
 
 
-## exclude some files from being watched
+## Exclude some files from being watched
 
 By default `node_modules`, `npm-debug.log`, `.git`, `.hg`, and `.svn` are ignored.
 
@@ -52,7 +52,7 @@ You can ignore additional paths by adding a `data-ignore` attribute to the scrip
 The ignore pattern will be passed to [chokidar][] and interpreted by [micromatch][].
 
 
-## don't annoyingly assert window focus when reloading
+## Don't annoyingly assert window focus when reloading
 
 (This can be especially annoying if your editor autosaves!)
 
@@ -80,7 +80,7 @@ win.shown = yes
 (Now autosaving can once again be beneficial!)
 
 
-## develop nw-dev
+## Develop nw-dev
 
 * `npm i`
 
