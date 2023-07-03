@@ -1,3 +1,4 @@
+> This repository is in maintainance mode. Bug fixes will be provided on a best effort basis. If you use this project, please consider contributing back.
 
 # <img src="./nw-dev-logo.svg" height="64" valign="middle"> nw-dev
 
