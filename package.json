@@ -35,6 +35,6 @@
     "coffeescript": "^2.7.0"
   },
   "dependencies": {
-    "chokidar": "^3.5.3"
+    "chokidar": "^4.0.0"
   }
 }
