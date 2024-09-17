@@ -27,14 +27,8 @@
     "developer",
     "development"
   ],
-  "main": "lib/dev.js",
-  "scripts": {
-    "prepublish": "coffee -o lib/ -c src/"
-  },
-  "devDependencies": {
-    "coffeescript": "^2.7.0"
-  },
+  "main": "src/dev.js",
   "dependencies": {
-    "chokidar": "^3.5.3"
+    "chokidar": "^4.0.0"
   }
 }
